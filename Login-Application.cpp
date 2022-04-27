@@ -8,10 +8,7 @@
 #include <string>
 #include <map>
 #include <regex>
-<<<<<<< HEAD
 #include <conio.h>
-=======
->>>>>>> 6a20efaff336e4333f3482416288cb34d4f3bd9a
 
 using namespace std;
 int mainmessage();
@@ -33,15 +30,9 @@ void GetUemail(register_user& newu)
     regex valid_email("((([!--]|[A-z]|[0-9])+(\.)?([!--]|[A-z]|[0-9])+[@])|(([!--]|[A-z]|[0-9])+[@]))((([A-z]*[0-9]*[A-z]+[0-9]*)+[-]?([A-z]*[0-9]*[A-z]+[0-9]*))|([A-z]*[0-9]+[A-z]*[-]?[0-9]*[A-z]+[0-9]*)|([0-9]*[A-z]+[0-9]*[-]?[A-z]*[0-9]+[A-z]*)|([A-z]))+(\.com)");
     while (!regex_match(newu.Uemail, valid_email))
     {
-<<<<<<< HEAD
         cout << "Invalid E-Mail !";
         cout << "Please enter the E-Mail: ";
         getline(cin,newu.Uemail);
-=======
-                cout << "Please enter the E-Mail: ";
-                cout << "Invalid E-Mail !";
-                getline(cin,newu.Uemail);
->>>>>>> 6a20efaff336e4333f3482416288cb34d4f3bd9a
 
     }
     for(it = userCheck.begin(); it!=userCheck.end(); it++)
@@ -55,7 +46,6 @@ void GetUemail(register_user& newu)
 }
 void GetUphone(register_user& newu)
 {
-<<<<<<< HEAD
     cout << "Please Enter the Phone Number: ";
     getline(cin,newu.Uphone);
     if(newu.Uphone.size() == 11  || newu.Uphone.size() == 10)
@@ -85,28 +75,12 @@ void GetUphone(register_user& newu)
         }
     }
     check.close();
-=======
-    getline(cin,newu.Uphone);
-    if(newu.Uphone.size() == 11  || newu.Uphone.size() == 10)
-    {
-                while(!regex_match(newu.Uphone, regex("(01)(1|2|5|0)([0-9]+)")))
-                {
-                        cout << "Invalid Phone Number !, Try Again\n:" << endl;
-                        getline(cin,newu.Uphone);
-                }
-    }else
-    {
-            cout << "Invalid Phone Number !, Try Again\n:";
-            return GetUphone(newu);
-    }
->>>>>>> 6a20efaff336e4333f3482416288cb34d4f3bd9a
 
 }
 void GetUname(register_user& newu)
 {
     getline(cin,newu.Uname);
     while (!regex_match(newu.Uname, regex("([_a-zA-Z]*)")))
-<<<<<<< HEAD
     {
         cout << "Invalid User Name!, Try Again\n:";
         getline(cin,newu.Uname);
@@ -181,17 +155,6 @@ void GetUPassword(register_user& newu)
         cout << "Enter The Password Again: ";
         checkPass = HidePass();
     }
-=======
-        {
-            cout << "Invalid User Name !, Try Again\n:";
-            getline(cin,newu.Uname);
-
-        }
-}
-void GetUPassword(register_user& newu)
-{
-    getline(cin,newu.Upassword);
->>>>>>> 6a20efaff336e4333f3482416288cb34d4f3bd9a
 }
 void GetUid(register_user& newu)
 {
@@ -216,11 +179,7 @@ void addinfo()
             while(getline(myStream, line))
             {
                 string email,id;
-<<<<<<< HEAD
                 int emailfound =0 , idfound = 0;
-=======
-                int emailfound = 0 , idfound = 0;
->>>>>>> 6a20efaff336e4333f3482416288cb34d4f3bd9a
                 if (line.find("| E-Mail") != std::string::npos)
                     emailfound = line.find("| E-Mail") + 9;
                 while(line[emailfound] != ' ')
@@ -260,22 +219,15 @@ istream& operator>> (istream& in, register_user& i)
    GetUemail(i);
    cout << "Please enter the User ID: ";
    GetUid(i);
-<<<<<<< HEAD
 
    GetUphone(i);
    cout << "\nYour Password Should be at least 8 Char \n";
    cout << "and you can use a mixture of: [A-Z], [a-z]\n";
    cout << "and at least one special character, e.g.,!@#?][\n";
-=======
-   cout << "Please enter the Phone Number: ";
-   GetUphone(i);
-   cout << "Please enter the Password: ";
->>>>>>> 6a20efaff336e4333f3482416288cb34d4f3bd9a
    GetUPassword(i);
    return in;
 }
 
-<<<<<<< HEAD
 void putToSystem()
 {
     fstream Usys;
@@ -283,34 +235,22 @@ void putToSystem()
     Usys << "ID: " << newu.Uid << " | " << "Password: " << newu.Upassword << endl;
     Usys.close();
 }
-=======
-
->>>>>>> 6a20efaff336e4333f3482416288cb34d4f3bd9a
 void user_register()
 {
     addinfo();
     datafile.open("usersdata.txt",ios::app);
     cin >> newu;
-<<<<<<< HEAD
     putToSystem();
     cout << "Congratulations, your account has been successfully created";
     datafile << newu << endl;
     datafile.close();
-=======
-    cout << "Congratulations, your account has been successfully created";
-    datafile << newu << endl;
->>>>>>> 6a20efaff336e4333f3482416288cb34d4f3bd9a
 
 }
 
 
 int main()
 {
-<<<<<<< HEAD
        user_register();
-=======
-        mainmessage();
->>>>>>> 6a20efaff336e4333f3482416288cb34d4f3bd9a
 }
 
 int mainmessage()
