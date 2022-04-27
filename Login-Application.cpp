@@ -29,7 +29,8 @@ void GetUemail(register_user& newu)
     regex valid_email("((([!--]|[A-z]|[0-9])+(\.)?([!--]|[A-z]|[0-9])+[@])|(([!--]|[A-z]|[0-9])+[@]))((([A-z]*[0-9]*[A-z]+[0-9]*)+[-]?([A-z]*[0-9]*[A-z]+[0-9]*))|([A-z]*[0-9]+[A-z]*[-]?[0-9]*[A-z]+[0-9]*)|([0-9]*[A-z]+[0-9]*[-]?[A-z]*[0-9]+[A-z]*)|([A-z]))+(\.com)");
     while (!regex_match(newu.Uemail, valid_email))
     {
-                cout << "Invalid E-Mail !, Try Again\n:";
+                cout << "Please enter the E-Mail: ";
+                cout << "Invalid E-Mail !";
                 getline(cin,newu.Uemail);
 
     }
@@ -37,7 +38,7 @@ void GetUemail(register_user& newu)
     {
         if( it->second == newu.Uemail)
         {
-            cout << "Email Already Exists!, Try Again\n:" ;
+            cout << "Email Already Exists!, Try Again\n:";
             return GetUemail(newu);
         }
     }
@@ -45,12 +46,29 @@ void GetUemail(register_user& newu)
 void GetUphone(register_user& newu)
 {
     getline(cin,newu.Uphone);
+    if(newu.Uphone.size() == 11  || newu.Uphone.size() == 10)
+    {
+                while(!regex_match(newu.Uphone, regex("(01)(1|2|5|0)([0-9]+)")))
+                {
+                        cout << "Invalid Phone Number !, Try Again\n:" << endl;
+                        getline(cin,newu.Uphone);
+                }
+    }else
+    {
+            cout << "Invalid Phone Number !, Try Again\n:";
+            return GetUphone(newu);
+    }
 
 }
 void GetUname(register_user& newu)
 {
-    cin.ignore();
     getline(cin,newu.Uname);
+    while (!regex_match(newu.Uname, regex("([_a-zA-Z]*)")))
+        {
+            cout << "Invalid User Name !, Try Again\n:";
+            getline(cin,newu.Uname);
+
+        }
 }
 void GetUPassword(register_user& newu)
 {
@@ -79,7 +97,7 @@ void addinfo()
             while(getline(myStream, line))
             {
                 string email,id;
-                int emailfound =0 , idfound = 0;
+                int emailfound = 0 , idfound = 0;
                 if (line.find("| E-Mail") != std::string::npos)
                     emailfound = line.find("| E-Mail") + 9;
                 while(line[emailfound] != ' ')
@@ -111,7 +129,8 @@ ostream& operator<< (ostream& out ,const register_user& i)
     out << " | Password:" << i.Upassword ;
 }
 
-istream& operator>> (istream& in, register_user& i){
+istream& operator>> (istream& in, register_user& i)
+{
    cout << "Please enter the User Name: ";
    GetUname(i);
    cout << "Please enter the E-Mail: ";
@@ -160,10 +179,10 @@ int mainmessage()
         }
         else if (choosing == "2")
         {
+            cin.ignore();
             sleep(1);
             system("CLS");
             user_register();
-            break;
         }
         else
         {
@@ -174,4 +193,5 @@ int mainmessage()
         }
 
     }
+
 }
