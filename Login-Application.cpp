@@ -27,7 +27,7 @@ void GetUemail(register_user& newu)
 {
     map<string,string>::iterator it;
     getline(cin,newu.Uemail);
-    regex valid_email("((([!--]|[A-z]|[0-9])+(\.)?([!--]|[A-z]|[0-9])+[@])|(([!--]|[A-z]|[0-9])+[@]))((([A-z]*[0-9]*[A-z]+[0-9]*)+[-]?([A-z]*[0-9]*[A-z]+[0-9]*))|([A-z]*[0-9]+[A-z]*[-]?[0-9]*[A-z]+[0-9]*)|([0-9]*[A-z]+[0-9]*[-]?[A-z]*[0-9]+[A-z]*)|([A-z]))+(\.com)");
+    regex valid_email("((([!--]|[A-z]|[0-9])+(\.)?([!--]|[A-z]|[0-9])+[@])|(([!--]|[A-z]|[0-9])+[@]))((([A-z]*[0-9]*[A-z]+[0-9]*)+[-]?([A-z]*[0-9]*[A-z]+[0-9]*))|([A-z]*[0-9]+[A-z]*[-]?[0-9]*[A-z]+[0-9]*)|([0-9]*[A-z]+[0-9]*[-]?[A-z]*[0-9]+[A-z]*)|([A-z]))+(\.)[A-Za-z]+");
     while (!regex_match(newu.Uemail, valid_email))
     {
         cout << "Invalid E-Mail !";
@@ -269,12 +269,9 @@ int mainmessage()
             cout << "See You Next Time ..." << endl;
             break;
         }
-        else if (choosing == "2")
+        else if (choosing == "1")
         {
-            cin.ignore();
-            sleep(1);
-            system("CLS");
-            user_register();
+
         }
         else
         {
@@ -287,3 +284,5 @@ int mainmessage()
     }
 
 }
+
+
