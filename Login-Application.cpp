@@ -61,21 +61,6 @@ void GetUphone(register_user& newu)
         cout << "Invalid Phone Number!, Try Again\n:";
         return GetUphone(newu);
     }
-    string tmp;
-    ifstream check;
-    check.open("usersdata.txt");
-    while(!datafile.fail() && !datafile.eof())
-    {
-        check >> tmp;
-        size_t found = tmp.find(newu.Uphone);
-        if(found != string::npos)
-        {
-            cout << "This Phone Number Already Exists!, Try Again\n";
-            return GetUphone(newu);
-        }
-    }
-    check.close();
-
 }
 void GetUname(register_user& newu)
 {
