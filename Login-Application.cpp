@@ -320,16 +320,10 @@ void afterlogin()
     while(true)
     {
           cout  << "[1] Change Password \n"
-                << "[2] Log Out and Return to Main Menu  \n"
-                << "[0] Exit. \n";
+                << "[2] Log Out and Return to Main Menu  \n";
           cout << "=> ";
          cin >> choosing;
-        if(choosing == "0")
-        {
-            cout << "See You Next Time ..." << endl;
-            break;
-        }
-        else if (choosing == "1")
+        if (choosing == "1")
         {
             changepassword(loginu);
         }
