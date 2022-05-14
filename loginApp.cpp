@@ -1,6 +1,6 @@
 /*
 FCAI – Programming 1 – 2022 - Assignment 4
-Program Name: CS112-203-2nd–S1,2-20210255-20210376-20210436-A4-LoginApp.cpp 
+Program Name: CS112-203-2nd–S1,2-20210255-20210376-20210436-A4-LoginApp.cpp
 Program Description: Login Application
 Last Modification Date: 12 / 5 / 2022.
 Author1 and ID and Group: Abdelrhman Reda Mohamed- 20210255- GROUP A
@@ -10,62 +10,15 @@ Teaching Assistant: Eng. Nesma & Eng. Yousra
 Purpose: Registeration and login of users' accounts
  */
 
-#include <iostream>
-#include <vector>
-#include <cmath>
-#include <algorithm>
-#include <fstream>
-#include <unistd.h>
-#include <cstring>
-#include <string>
-#include <map>
-#include <regex>
-#include <conio.h>
+#include "LoginApp.h"
 
-using namespace std;
-int mainmessage();
-//--------------------------------------------------
-//                     Global Objects
-//--------------------------------------------------
 fstream datafile;
 map<string,string> userCheck;
 map<string,string> LoginCheck;
 string user_password="";
+login_user loginu;
+register_user newu;
 static int checker = 0; // Function CheckPassword in login operator
-
-struct login_user
-{
-    string UserID;
-    string UserPass;
-} loginu;
-
-struct register_user
-{
-    string Uname;
-    string Uemail;
-    string Uid;
-    string Uphone;
-    string Upassword;
-} newu;
-//              Functions
-void CheckId(login_user& loginu);
-void CheckPassword(login_user& loginu);
-void GetUemail(register_user& newu);
-void GetUphone(register_user& newu);
-void GetUname(register_user& newu);
-string HidePass();
-void addinfo();
-void GetUid(register_user& newu);
-void GetUPassword(register_user& newu);
-void user_register();
-void mainmessege();
-void changepassword(login_user& loginu);
-void afterlogin();
-void loaduser();
-void user_login();
-void Newpassword(login_user& loginu);
-void newfile(login_user& loginu,string );
-
 
 //--------------------------------------------------
 //                     OverLoading
@@ -124,62 +77,6 @@ istream& operator>> (istream& in, register_user& i)
    GetUPassword(i);
    return in;
 }
-
-//--------------------------------------------------
-//             int Main Function
-//--------------------------------------------------
-
-int main()
-{
-       mainmessage();
-}
-
-//--------------------------------------------------
-//             Main Message Function
-//--------------------------------------------------
-
-int mainmessage()
-{
-    string choosing;
-    while(true)
-    {
-          cout  << "[1] Login \n"
-                << "[2] Register \n"
-                << "[3] Forget Password\n"
-                << "[0] Exit. \n";
-          cout << "=> ";
-         cin >> choosing;
-        if(choosing == "0")
-        {
-            cout << "See You Next Time ..." << endl;
-            break;
-        }
-        else if (choosing == "1")
-        {
-                cin.ignore();
-                sleep(1);
-                system("CLS");
-                user_login();
-        }
-        else if (choosing == "2")
-        {
-                cin.ignore();
-                sleep(1);
-                system("CLS");
-                user_register();
-        }
-        else
-        {
-            sleep(1);
-            system("CLS");
-            cout << "Wrong Choose !!" << endl;
-            return mainmessage();
-        }
-
-    }
-
-}
-
 //--------------------------------------------------
 //             Login Main Function
 //--------------------------------------------------
@@ -405,7 +302,7 @@ void Newpassword(login_user& loginu)
     string checkPass;
     cout << "Enter The New Password Again: ";
     checkPass = HidePass();
-    cout << checkPass << " " << newpassword<<endl;
+    //cout << checkPass << " " << newpassword<<endl; to show passwords
     while(checkPass != newpassword)  // Check the Matching of the password
     {
         cout << "Enter The New Password Again: ";
@@ -446,7 +343,6 @@ void newfile(login_user& loginu,string newpassword)
     sleep(1);
     system("CLS");
     cout << "Password Changed Successfully,\n";
-    mainmessage();
 }
 
 
@@ -459,7 +355,7 @@ void user_register()
     addinfo();
     datafile.open("usersdata.txt",ios::app);
     cin >> newu;
-    cout << "Congratulations, your account has been successfully created";
+    cout << "Congratulations, your account has been successfully created\n";
     datafile << newu << endl;
     datafile.close();
 
@@ -620,7 +516,7 @@ void GetUid(register_user& newu)
     }
 }
 
-//          [4] Hide Pass
+//          [7] Hide Pass
 
 string HidePass() // this function to make * while the user enter the password.
 {
@@ -653,4 +549,3 @@ string HidePass() // this function to make * while the user enter the password.
         tmp.replace(tmp.size()-1, 1, "");  // Remove Space in the last of string
     return tmp;
 }
-
