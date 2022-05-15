@@ -6,3 +6,7 @@
 [2] User Login <br />
 [3] Change Password<br />**
 
+
+### Important Notes :
+
+[1] You must include the [loginApp].h and [loginApp].cpp to you project file [main].
