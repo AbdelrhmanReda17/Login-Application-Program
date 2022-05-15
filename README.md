@@ -7,7 +7,7 @@
 [2] User Login <br />**
 
 
-## Important Notes :
+## Additional Info :
 
 **[1] You must include the [loginApp].h and [loginApp].cpp to you project file [main].**
 
