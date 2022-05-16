@@ -258,7 +258,6 @@ void changepassword(login_user& loginu)
         oldpassword[x] = char(oldpassword[x]+1);
         
     }
-    cout << loginu.UserPass << " " << oldpassword << endl;
     while(oldpassword != loginu.UserPass)
     {
         cout << "Incorrect Password ,Try Again ! :";
