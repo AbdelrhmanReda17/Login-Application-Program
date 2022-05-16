@@ -10,7 +10,7 @@ Teaching Assistant: Eng. Nesma & Eng. Yousra
 Purpose: Registeration and login of users' accounts
  */
 
-#include "LoginApp.h"
+#include "CS112-2022-2nd-S1,S2-20210255-20210376-20210436-A4-LoginFunctions.h"
 
 fstream datafile;
 map<string,string> userCheck;
@@ -151,7 +151,8 @@ void CheckId(login_user& loginu) // This function is used to  Check if the user 
 void CheckPassword(login_user& loginu) // This function is used to  Check if the user add an  the correct password.
 {
         bool success = false;
-        loginu.UserPass = HidePass(); // calling function hide pass to hide the password that the user add
+        if (3-checker != 0)
+            loginu.UserPass = HidePass(); // calling function hide pass to hide the password that the user add
         for (int x = 0 ; x < loginu.UserPass.size() ; x++) // 332 ~ 335 -> Encrypt the input Password
         {
             loginu.UserPass[x] = char(loginu.UserPass[x]+1);
@@ -167,7 +168,10 @@ void CheckPassword(login_user& loginu) // This function is used to  Check if the
                     {
                         checker += 1; // increment the checker
                         cout << "Failed To Login , You have " << 3-checker << " Trials Left" << endl;
-                        cout << "Please enter the Correct Password: ";
+                        if (3-checker != 0)
+                        {
+                            cout << "Please enter the Correct Password: ";
+                        }
                         return CheckPassword(loginu); // return the function
                     }
 
