@@ -256,11 +256,17 @@ void changepassword(login_user& loginu)
     for (int x = 0 ; x < oldpassword.size() ; x++) // 332 ~ 335 ->  cipher the user Password
     {
         oldpassword[x] = char(oldpassword[x]+1);
+        
     }
+    cout << loginu.UserPass << " " << oldpassword << endl;
     while(oldpassword != loginu.UserPass)
     {
         cout << "Incorrect Password ,Try Again ! :";
         oldpassword = HidePass();
+        for (int x = 0 ; x < oldpassword.size() ; x++) // 332 ~ 335 ->  cipher the user Password
+        {
+            oldpassword[x] = char(oldpassword[x]+1);
+        }
     }
     Newpassword(loginu);
 }
