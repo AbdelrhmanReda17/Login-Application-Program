@@ -10,7 +10,7 @@ Teaching Assistant: Eng. Nesma & Eng. Yousra
 Purpose: Registeration and login of users' accounts
  */
 
-#include "CS112-2022-2nd-S1,S2-20210255-20210376-20210436-A4-LoginFunctions.h"
+#include "LoginApp.h"
 
 fstream datafile;
 map<string,string> userCheck;
