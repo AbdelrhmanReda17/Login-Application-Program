@@ -15,7 +15,7 @@ Purpose: Registeration and login of users' accounts
 //             int Main Function
 //--------------------------------------------------
 #include "LoginApp.h"
-
+#include "LoginApp.cpp"
 int main()
 {
     string choosing;
